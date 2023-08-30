@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
-// const item = require("./item.routes");
-// const customer = require("./customer.routes");
-// const sales = require("./sales.routes");
+const user = require("./user.routes");
+const buku = require("./buku.routes");
 
-// router.use("/api/item", item);
-// router.use("/api/customer", customer);
-// router.use("/api/sales", sales);
+router.use("/api/user", user);
+router.use("/api/buku", buku);
 
 module.exports = router;
