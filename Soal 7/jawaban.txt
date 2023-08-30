@@ -1,0 +1,7 @@
+Sebutkan cara-cara untuk mempercepat kinerja query pada database!
+
+1. Normalisasi Data --> Developer merancang skema basis data dengan baik agar dapat menghindari duplikasi data.
+2. Simbol Operator --> Penggunaan simbol operator yang benar sangat membantu dalam menghasilkan pencarian dengan cepat dari query yang ditulis.
+3. Gunakan WHERE dalam SELECT --> Digunakan untuk menyaring record data sehingga meminimalkan beban pada jaringan.
+4. Operator Max, Min dan Negatif --> Penggunaan operator tersebut dapat memakan waktu yang lebih lama dalam mencari hasil.
+5. Optimalisasi Query --> Ini sangat penting apabila query tersebut akan digunakan di dalam suatu program.

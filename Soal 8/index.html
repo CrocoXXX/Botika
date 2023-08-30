@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Menampilkan data dari API </title>
+    <style>
+        .title {
+            text-align: center;
+        }
+        .data{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-refresh {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title"> Data Pengguna Acak dari API </h1>
+    <div class="data">
+        <div id="dataUser"></div>
+    </div>
+    <div class="btn">
+        <button class="btn-refresh" id="btn-refresh"> Refresh </button>
+    </div>
+    
+
+    <script>
+        const api = 'https://randomuser.me/api/'
+        const dataUser = document.getElementById('dataUser')
+        const refresh = document.getElementById('btn-refresh')
+
+        const fetchData = () => {
+            fetch(api)
+            .then(res => res.json())
+            .then(data => {
+                const user = data.results[0]
+                // console.log(user);
+                
+                const fullName = `${user.name.title} ${user.name.first} ${user.name.last}`
+                const email = user.email
+                const city = user.location.city
+                const country = user.location.country
+                const picture = user.picture.large
+
+                const listUser = document.createElement('div')
+                listUser.innerHTML = `
+                    <img src='${picture}' alt='${fullName}'>
+                    <p><strong> ${fullName} </strong></p>
+                    <p> ${email} </p>
+                    <p> 
+                        ${country}
+                        <p> ${city} </p> 
+                    </p>
+                `
+
+                dataUser.innerHTML = ''
+                dataUser.appendChild(listUser)
+            })
+            .catch(err => {
+                console.log('Data tidak ditemukan', err);
+            })
+        }
+
+        refresh.addEventListener('click', fetchData)
+
+        fetchData()
+    </script>
+</body>
+</html>
